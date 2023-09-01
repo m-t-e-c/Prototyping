@@ -1,0 +1,56 @@
+[
+  {
+    "Id" : "1",
+    "Name": "The Forest Ruins",
+    "Level": "1",
+    "FishingDuration": "10",
+    "Unlocked" : "true",
+    "FishList": [
+      {
+        "Name": "Çupra",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      },
+      {
+        "Name": "Çupra2",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      },
+      {
+        "Name": "Çupra3",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      }
+    ]
+  },
+  {
+    "Id" : "2",
+    "Name": "The Misty Mountains",
+    "Level": "2",
+    "FishingDuration": "20",
+    "Unlocked" : "false",
+    "FishList": [
+      {
+        "Name": "Hamsi1",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      },
+      {
+        "Name": "Hamsi2",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      },
+      {
+        "Name": "Hamsi3",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      }
+    ]
+  }
+]

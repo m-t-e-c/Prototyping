@@ -15,7 +15,7 @@ namespace FishingIdle.Managers
         {
             foreach (FishData fishData in fishList)
             {
-                Debug.Log($"Fish sold: {fishData.fishName} - {fishData.weight} - {fishData.length} - {fishData.price}");
+                Debug.Log($"Fish sold: {fishData.FishName} - {fishData.Weight} - {fishData.Price} - {fishData.Rarity}");
             }    
         }
     }

@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: TestView
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6eea9f322447cd7438bde4cde0acb124
+    m_Address: FishingZoneView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 627dedd9b765c254a822bd4ceb6ae812, type: 2}
   m_SchemaSet:

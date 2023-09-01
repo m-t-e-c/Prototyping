@@ -25,7 +25,7 @@ namespace FishingIdle.Models
         {
             _caughtFish.Add(fishCaughtEventArgs.fishData);
             Debug.Log(
-                $"Fish caught: {fishCaughtEventArgs.fishData.fishName} - {fishCaughtEventArgs.fishData.weight} - {fishCaughtEventArgs.fishData.length} - {fishCaughtEventArgs.fishData.price}");
+                $"Fish caught: {fishCaughtEventArgs.fishData.FishName} - {fishCaughtEventArgs.fishData.Weight} - {fishCaughtEventArgs.fishData.Price} - {fishCaughtEventArgs.fishData.Rarity}");
         }
 
         void SellAllFishes(object sender, EventArgs e)

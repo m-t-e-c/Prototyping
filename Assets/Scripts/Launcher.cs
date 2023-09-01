@@ -1,41 +1,43 @@
-﻿using System;
+﻿using FishingIdle;
 using FishingIdle.Managers;
 using FishingIdle.Managers.Interfaces;
+using FishingIdle.Services;
 using UnityEngine;
 
-namespace FishingIdle
+public class Launcher : MonoBehaviour
 {
-    public class Launcher : MonoBehaviour
-    {
-        IFishingManager _fishingManager;
-        IMarketManager _marketManager;
-        IViewManager _viewManager;
+    IFishingManager _fishingManager;
+    IMarketManager _marketManager;
+    IViewManager _viewManager;
+    IFishingZoneManager _fishingZoneManager;
 
-        Locator _locator;
+    Locator _locator;
         
-        void Awake()
-        {
-            
-            Init();
-        }
+    void Awake()
+    {
+        Services.RetrieveData();
+        Init();
+    }
 
-        void Init()
-        {
-            _locator = new Locator();
+    void Init()
+    {
+        _locator = new Locator();
             
-            _fishingManager = new FishingManager();
-            _locator.Register<IFishingManager>(_fishingManager);
+        _fishingManager = new FishingManager();
+        _locator.Register<IFishingManager>(_fishingManager);
             
-            _marketManager = new MarketManager();
-            _locator.Register<IMarketManager>(_marketManager);
+        _marketManager = new MarketManager();
+        _locator.Register<IMarketManager>(_marketManager);
             
-            _viewManager = new ViewManager();
-            _locator.Register<IViewManager>(_viewManager);
-        }
+        _viewManager = new ViewManager();
+        _locator.Register<IViewManager>(_viewManager);
 
-        void OnDestroy()
-        {
-            _locator.Reset();
-        }
+        _fishingZoneManager = new FishingZoneManager();
+        _locator.Register<IFishingZoneManager>(_fishingZoneManager);
+    }
+
+    void OnDestroy()
+    {
+        _locator.Reset();
     }
 }
