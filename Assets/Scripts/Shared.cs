@@ -7,39 +7,41 @@ namespace FishingIdle
     [Serializable]
     public record FishingZoneDataOutput
     {
-        [JsonProperty("Id")]
+        [JsonProperty("Id")] 
         public string ID;
-        
-        [JsonProperty("Name")]
+
+        [JsonProperty("Name")] 
         public string ZoneName;
-        
-        [JsonProperty("Level")]
+
+        [JsonProperty("Level")] 
         public int ZoneLevel;
-        
-        [JsonProperty("Unlocked")]
+
+        [JsonProperty("Unlocked")] 
         public bool IsUnlocked;
-        
-        [JsonProperty("FishingDuration")]
+
+        [JsonProperty("FishingDuration")] 
         public float FishingDuration;
-        
-        [JsonProperty("FishList")]
+
+        [JsonProperty("FishList")] 
         public List<FishData> FishList;
     }
-    
+
     [Serializable]
     public record FishData
     {
-       [JsonProperty("Name")]
-       public string FishName;
-       
-       [JsonProperty("Weight")]
-       public float Weight;
-       
-       [JsonProperty("Price")]
-       public float Price;
-       
-       [JsonProperty("Rarity")]
-       public int Rarity;
+        [JsonProperty("Id")] 
+        public string ID;
 
+        [JsonProperty("Name")] 
+        public string FishName;
+
+        [JsonProperty("Weight")] 
+        public float Weight;
+
+        [JsonProperty("Price")] 
+        public float Price;
+
+        [JsonProperty("Rarity")] 
+        public int Rarity;
     }
 }

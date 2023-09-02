@@ -9,11 +9,11 @@ namespace FishingIdle.Managers
 {
     public class ViewManager : IViewManager
     {
-        private Dictionary<string, GameObject> openedViews = new();
+        readonly Dictionary<string, GameObject> openedViews = new();
 
         public void LoadView<T>(LoadViewParams<T> loadViewParams)
         {
-            if (!openedViews.ContainsKey(loadViewParams.viewName))
+            if (!openedViews.ContainsKey(loadViewParams.GetViewPresenterType()))
             {
                 Addressables.LoadAssetAsync<GameObject>(loadViewParams.viewName).Completed += (obj) =>
                 {
@@ -21,6 +21,7 @@ namespace FishingIdle.Managers
                     {
                         GameObject viewPrefab = obj.Result;
                         GameObject viewInstance = Object.Instantiate(viewPrefab);
+                        viewInstance.transform.SetAsLastSibling();
                         openedViews[loadViewParams.GetViewPresenterType()] = viewInstance;
                         loadViewParams.onLoad?.Invoke(viewInstance.GetComponent<T>());
                     }

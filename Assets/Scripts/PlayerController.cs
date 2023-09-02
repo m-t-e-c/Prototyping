@@ -5,20 +5,26 @@ namespace FishingIdle
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] Joystick joystick;
         [SerializeField] CharacterController characterController;
         [SerializeField] float speed;
         
+        Joystick _joystick;
         PlayerModel _model;
 
-        void Start()
+        public void Init(Joystick joystick)
         {
             _model = new PlayerModel();
+            _joystick = joystick;
         }
 
         void Update()
         {
-            Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical) * speed;
+            if (ReferenceEquals(_joystick, null))
+            {
+                return;
+            }
+            
+            Vector3 moveVector = (Vector3.right * _joystick.Horizontal + Vector3.forward * _joystick.Vertical) * speed;
             characterController.Move(moveVector * Time.deltaTime);
         }
         
