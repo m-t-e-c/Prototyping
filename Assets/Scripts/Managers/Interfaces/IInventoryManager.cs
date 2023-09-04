@@ -8,8 +8,12 @@ namespace FishingIdle.Managers.Interfaces
     {
         public string ID;
         public string Name;
+        public string Description;
         public int Amount;
         public InventoryItemType InventoryItemType;
+        public CurrencyType CurrencyType;
+        public bool IsSellable;
+        public long Price;
     }
     
     
@@ -22,6 +26,6 @@ namespace FishingIdle.Managers.Interfaces
         public List<InventoryItem> GetItemsByType(InventoryItemType type);
         public InventoryItem GetItem(string itemID);
         public void AddItem(InventoryItemParams item);
-        public void RemoveItem(InventoryItemParams item);
+        public void RemoveItem(string itemID);
     }
 }

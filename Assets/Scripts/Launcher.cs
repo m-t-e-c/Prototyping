@@ -13,6 +13,7 @@ public class Launcher : MonoBehaviour
     IMarketManager _marketManager;
     IViewManager _viewManager;
     IFishingZoneManager _fishingZoneManager;
+    ICurrencyManager _currencyManager;
     
     Locator _locator;
     
@@ -21,7 +22,9 @@ public class Launcher : MonoBehaviour
         
     void Awake()
     {
-        Services.RetrieveData();
+        FIServices.RetrieveCurrencyData();
+        FIServices.RetrieveUserInventoryData();
+        FIServices.RetrieveFishingZoneData();
         InitManagers();
         _viewManager.LoadView(new LoadViewParams<GameplayPresenter>()
         {
@@ -48,6 +51,9 @@ public class Launcher : MonoBehaviour
 
         _fishingZoneManager = new FishingZoneManager();
         _locator.Register<IFishingZoneManager>(_fishingZoneManager);
+        
+        _currencyManager = new CurrencyManager();
+        _locator.Register<ICurrencyManager>(_currencyManager);
 
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FishingIdle.Managers.Interfaces;
+using FishingIdle.Services;
 
 namespace FishingIdle.Managers
 {
@@ -9,8 +10,18 @@ namespace FishingIdle.Managers
         public event EventHandler<InventoryItem> OnItemAdded;
         public event EventHandler<InventoryItem> OnItemRemoved;
 
-        readonly List<InventoryItem> _userItems = new();
+        List<InventoryItem> _userItems = new();
 
+        public InventoryManager()
+        {
+            GetConfig();
+        }
+
+        void GetConfig()
+        {
+            _userItems = FIServices.GetUserInventoryDataOutput();
+        }
+        
         public List<InventoryItem> GetAllItems()
         {
             return _userItems;
@@ -33,7 +44,7 @@ namespace FishingIdle.Managers
             if (isItemExist)
             {
                 var userItem = GetItem(inventoryItemParams.ID);
-                userItem.ItemCount += inventoryItemParams.Amount;
+                userItem.ItemAmount += inventoryItemParams.Amount;
                 OnItemAdded?.Invoke(this, userItem);
             }
             else
@@ -43,23 +54,28 @@ namespace FishingIdle.Managers
                     ID = inventoryItemParams.ID,
                     ItemName = inventoryItemParams.Name,
                     ItemType = inventoryItemParams.InventoryItemType,
-                    ItemCount = inventoryItemParams.Amount
+                    ItemAmount = inventoryItemParams.Amount,
+                    ItemDescription = inventoryItemParams.Description,
+                    IsSellable = inventoryItemParams.IsSellable,
+                    ItemPrice = inventoryItemParams.Price
                 };
                 _userItems.Add(newItem);
                 OnItemAdded?.Invoke(this, newItem);
             }
+            
+            FIServices.SaveUserInventory(_userItems);
         }
 
-        public void RemoveItem(InventoryItemParams inventoryItemParams)
+        public void RemoveItem(string itemID)
         {
-            bool isItemExist = _userItems.Exists(item => item.ID.Equals(inventoryItemParams.ID));
+            bool isItemExist = _userItems.Exists(item => item.ID.Equals(itemID));
 
             if (isItemExist)
             {
-                var userItem = GetItem(inventoryItemParams.ID);
-                if (userItem.ItemCount > 1)
+                var userItem = GetItem(itemID);
+                if (userItem.ItemAmount > 1)
                 {
-                    userItem.ItemCount -= inventoryItemParams.Amount;
+                    userItem.ItemAmount -= 1;
                 }
                 else
                 {
@@ -67,6 +83,7 @@ namespace FishingIdle.Managers
                 }
                 
                 OnItemRemoved?.Invoke(this, userItem);
+                FIServices.SaveUserInventory(_userItems);
             }
         }
     }

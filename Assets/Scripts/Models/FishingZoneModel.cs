@@ -1,7 +1,6 @@
 ﻿using System;
 using FishingIdle.Managers.Interfaces;
 using FishingIdle.Presenters.MiniGamePresenter;
-using UnityEngine;
 
 namespace FishingIdle.Models
 {
@@ -44,8 +43,12 @@ namespace FishingIdle.Models
             {
                 ID = fish.ID,
                 Name = fish.FishName,
+                Description = fish.Description,
                 InventoryItemType = InventoryItemType.FISH,
-                Amount = 1,
+                IsSellable = true,
+                Price = fish.Price,
+                CurrencyType = fish.CurrencyType,
+                Amount = 1
             });
             OnFishingEnded?.Invoke();
         }
@@ -57,8 +60,12 @@ namespace FishingIdle.Models
             {
                 ID = fish.ID,
                 Name = fish.FishName,
+                Description = fish.Description,
                 InventoryItemType = InventoryItemType.FISH,
-                Amount = 1,
+                IsSellable = true,
+                Price = fish.Price,
+                CurrencyType = fish.CurrencyType,
+                Amount = 1
             });
             OnFishingEnded?.Invoke();
         }

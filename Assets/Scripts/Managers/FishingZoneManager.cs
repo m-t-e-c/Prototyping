@@ -15,7 +15,7 @@ namespace FishingIdle.Managers
         
         public void GetConfig()
         {
-            _fishingZones = Services.Services.GetFishingZoneDataOutputList();
+            _fishingZones = Services.FIServices.GetFishingZoneDataOutputList();
         }
 
         public List<FishingZoneDataOutput> GetFishingZones()

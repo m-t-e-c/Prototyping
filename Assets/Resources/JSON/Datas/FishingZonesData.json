@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1",
+    "Name": "The Forest Ruins",
+    "Level": "1",
+    "FishingDuration": "10",
+    "Unlocked": "true",
+    "FishList": [
+      {
+        "Id": "1",
+        "Name": "Çupra",
+        "Weight": 1.0,
+        "Price": 2.0,
+        "Rarity": 2,
+        "Description": "Çupra, also known as sea bream, is a popular fish in Mediterranean cuisine. It has a mild, sweet flavor and is often grilled or roasted with herbs and olive oil.",
+        "CurrencyType" : "HardCurrency"
+      },
+      {
+        "Id": "2",
+        "Name": "Levrek",
+        "Weight": 0.8,
+        "Price": 3.5,
+        "Rarity": 3,
+        "Description": "Levrek, or sea bass, is a versatile and delicious fish with tender white flesh. It's commonly pan-fried or baked with lemon and herbs for a delightful taste.",
+        "CurrencyType" : "HardCurrency"
+      },
+      {
+        "Id": "3",
+        "Name": "Somon",
+        "Weight": 1.2,
+        "Price": 5.7,
+        "Rarity": 4,
+        "Description": "Somon, also known as salmon, is prized for its rich, pink flesh and high omega-3 fatty acids. It's often grilled, smoked, or used in sushi.",
+        "CurrencyType" : "HardCurrency"
+      },
+      {
+        "Id": "4",
+        "Name": "Alabalık",
+        "Weight": 0.5,
+        "Price": 2.2,
+        "Rarity": 1,
+        "Description": "Alabalık, or trout, is a freshwater fish with a delicate flavor. It's commonly prepared by grilling, pan-frying, or baking.",
+        "CurrencyType" : "HardCurrency"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "The Misty Mountains",
+    "Level": "2",
+    "FishingDuration": "20",
+    "Unlocked": "false",
+    "FishList": [
+      {
+        "Name": "Hamsi1",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      },
+      {
+        "Name": "Hamsi2",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      },
+      {
+        "Name": "Hamsi3",
+        "Weight": "1",
+        "Price": "2",
+        "Rarity": "2"
+      }
+    ]
+  }
+]

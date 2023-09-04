@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 16b17f16487d9d14e894f845a8c5bd6e
   m_SerializeEntries:
-  - m_GUID: 89e2e6ae1d63db04bb00ca07e9d8801f
-    m_Address: TestView
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 6eea9f322447cd7438bde4cde0acb124
     m_Address: FishingZoneView
     m_ReadOnly: 0
@@ -43,6 +39,10 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 1347ffe8565ea174a93fabac90d32d84
     m_Address: InventoryView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2d15d81e177b99f4293b42119cba7a52
+    m_Address: MarketView
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

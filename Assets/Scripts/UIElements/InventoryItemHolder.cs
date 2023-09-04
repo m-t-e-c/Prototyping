@@ -12,7 +12,7 @@ namespace FishingIdle
         public void Init(InventoryItem item)
         {
             itemName.text = item.ItemName;
-            itemAmount.text = item.ItemCount.ToString();
+            itemAmount.text = item.ItemAmount.ToString();
         }
     }
 }

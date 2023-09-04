@@ -1,5 +1,4 @@
-﻿using System;
-using FishingIdle.Managers.Interfaces;
+﻿using FishingIdle.Managers.Interfaces;
 using FishingIdle.Presenters;
 using UnityEngine;
 
@@ -26,10 +25,9 @@ namespace FishingIdle
         {
             if (other.CompareTag("Player"))
             {
-                _marketManager.OnEnterMarketZone?.Invoke(this, EventArgs.Empty);
-                _viewManager.LoadView(new LoadViewParams<TestPresenter>()
+                _viewManager.LoadView(new LoadViewParams<MarketPresenter>()
                 {
-                    viewName = "TestView",
+                    viewName = "MarketView",
                     onLoad = (view) =>
                     {
                         Debug.Log($"View loaded {view}");
@@ -42,7 +40,7 @@ namespace FishingIdle
         {
             if (other.CompareTag("Player"))
             {
-                _marketManager.OnExitMarketZone?.Invoke(this, EventArgs.Empty);
+                _viewManager.DestroyView<MarketPresenter>();
             }
         }
     }

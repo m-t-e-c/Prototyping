@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FishingIdle.Managers.Interfaces;
 using Newtonsoft.Json;
 
 namespace FishingIdle
@@ -31,17 +32,33 @@ namespace FishingIdle
     {
         [JsonProperty("Id")] 
         public string ID;
-
+        
         [JsonProperty("Name")] 
         public string FishName;
+        
+        [JsonProperty("Description")]
+        public string Description;
 
         [JsonProperty("Weight")] 
         public float Weight;
 
         [JsonProperty("Price")] 
-        public float Price;
+        public long Price;
+        
+        [JsonProperty("CurrencyType")] 
+        public CurrencyType CurrencyType;
 
         [JsonProperty("Rarity")] 
         public int Rarity;
+    }
+    
+    [Serializable]
+    public record CurrencyDataOutput
+    {
+        [JsonProperty("SoftCurrency")] 
+        public long SoftCurrency;
+
+        [JsonProperty("HardCurrency")] 
+        public long HardCurrency;
     }
 }
