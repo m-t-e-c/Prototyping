@@ -78,9 +78,9 @@ namespace FishingIdle.Presenters.Market
             if (itemModel.itemAmount < 1)
             {
                 _data.RemoveItems(itemModel.index, 1);
-                Refresh();
             }
             
+            Refresh();
             _data.NotifyListChangedExternally();
             _onSellClicked?.Invoke(itemModel);
         }
@@ -126,22 +126,31 @@ namespace FishingIdle.Presenters.Market
             Action<MarketItemModel> onSellClicked = null)
         {
             _model = model;
-            _viewElements.itemNameLabel.text = model.itemName;
-            _viewElements.itemDescriptionLabel.text = model.itemDescription;
-            _viewElements.itemPriceLabel.text = model.itemPrice.ToString();
-            _viewElements.itemRarityLabel.text = model.itemRarity.ToString();
-            _viewElements.itemAmountLabel.text = model.itemAmount.ToString();
-
+            _viewElements.buyButton.onClick.RemoveAllListeners();
+            _viewElements.sellButton.onClick.RemoveAllListeners();
             _viewElements.buyButton.onClick.AddListener(() =>
             {
                 onBuyClicked?.Invoke(_model);
+                UpdateInfo();
             });
 
             _viewElements.sellButton.onClick.AddListener(() =>
             {
                 _model.itemAmount -= 1;
                 onSellClicked?.Invoke(_model);
+                UpdateInfo();
             });
+
+            UpdateInfo();
+        }
+
+        void UpdateInfo()
+        {
+            _viewElements.itemNameLabel.text = _model.itemName;
+            _viewElements.itemDescriptionLabel.text = _model.itemDescription;
+            _viewElements.itemPriceLabel.text = _model.itemPrice.ToString();
+            _viewElements.itemRarityLabel.text = _model.itemRarity.ToString();
+            _viewElements.itemAmountLabel.text = _model.itemAmount.ToString();
         }
     }
 

@@ -14,6 +14,7 @@ public class Launcher : MonoBehaviour
     IViewManager _viewManager;
     IFishingZoneManager _fishingZoneManager;
     ICurrencyManager _currencyManager;
+    IPlayerManager _playerManager;
     
     Locator _locator;
     
@@ -54,14 +55,16 @@ public class Launcher : MonoBehaviour
         
         _currencyManager = new CurrencyManager();
         _locator.Register<ICurrencyManager>(_currencyManager);
-
+        
+        _playerManager = new PlayerManager();
+        _locator.Register<IPlayerManager>(_playerManager);
     }
 
     async void SpawnPlayerAndCamera(Joystick joystick)
     {
         var playerResult = await Addressables.LoadAssetAsync<GameObject>(PlayerAddressableKey);
         GameObject player = Instantiate(playerResult);
-        player.GetComponent<PlayerController>().Init(joystick);
+        player.GetComponent<PlayerBehaviour>().Init(joystick);
         
         var cameraResult = await Addressables.LoadAssetAsync<GameObject>(CameraAddressableKey);
         GameObject cameraHolder = Instantiate(cameraResult, player.transform.position, Quaternion.identity);
