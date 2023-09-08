@@ -9,6 +9,7 @@ namespace FishingIdle.Services
     {
         static List<FishingZoneDataOutput> FishingZoneDataOutputList = new();
         static List<InventoryItem> UserInventoryDataOutput = new();
+        static List<ItemDataOutput> ItemsDataOutput = new();
         static CurrencyDataOutput CurrencyDataOutput = new();
 
         #region JSON Paths
@@ -16,6 +17,7 @@ namespace FishingIdle.Services
         const string FISHING_ZONE_DATA_PATH = "Assets\\Resources\\JSON\\Datas\\FishingZonesData.json";
         const string CURRENCY_DATA_PATH = "Assets\\Resources\\JSON\\Datas\\CurrencyData.json";
         const string USER_INVENTORY_DATA_PATH = "Assets\\Resources\\JSON\\Datas\\UserInventoryData.json";
+        const string ITEMS_DATA_PATH = "Assets\\Resources\\JSON\\Datas\\ItemsData.json";
 
         #endregion
 
@@ -73,6 +75,21 @@ namespace FishingIdle.Services
         {
             var json = JsonConvert.SerializeObject(inventoryItems, Formatting.Indented);
             File.WriteAllText(USER_INVENTORY_DATA_PATH, json);
+        }
+
+        #endregion
+
+        #region Items Services
+
+        public static void RetrieveItemsData()
+        {
+            var json = File.ReadAllText(ITEMS_DATA_PATH);
+            ItemsDataOutput = JsonConvert.DeserializeObject<List<ItemDataOutput>>(json);
+        }
+        
+        public static List<ItemDataOutput> GetItemsDataOutput()
+        {
+            return ItemsDataOutput;
         }
 
         #endregion

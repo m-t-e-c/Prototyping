@@ -13,16 +13,18 @@ namespace FishingIdle.Models
         readonly IFishingZoneManager _fishingZoneManager;
         readonly IInventoryManager _inventoryManager;
         readonly IViewManager _viewManager;
+        readonly IItemManager _itemManager;
 
         public FishingZoneModel(string zoneID)
         {
             _fishingZoneManager = Locator.Instance.Resolve<IFishingZoneManager>();
             _inventoryManager = Locator.Instance.Resolve<IInventoryManager>();
             _viewManager = Locator.Instance.Resolve<IViewManager>();
+            _itemManager = Locator.Instance.Resolve<IItemManager>();
 
             _fishingZoneDataOutput = _fishingZoneManager.GetFishingZone(zoneID);
         }
-        
+
         public void StartFishing()
         {
             _viewManager.LoadView(new LoadViewParams<MiniGamePresenter>()
@@ -31,44 +33,25 @@ namespace FishingIdle.Models
                 onLoad = presenter =>
                 {
                     OnFishingStarted?.Invoke();
-                    presenter.Init(OnMiniGameCompleted, OnMiniGameCompletedPerfect, 400);
+                    presenter.Init(OnMiniGameCompleted, OnMiniGameCompleted, 400);
                 }
             });
         }
 
         void OnMiniGameCompleted()
         {
-            var fish = _fishingZoneDataOutput.FishList.Find(fish => fish.Rarity == 1);
-            _inventoryManager.AddItem(new InventoryItemParams()
-            {
-                ID = fish.ID,
-                Name = fish.FishName,
-                Description = fish.Description,
-                InventoryItemType = InventoryItemType.FISH,
-                IsSellable = true,
-                Price = fish.Price,
-                CurrencyType = fish.CurrencyType,
-                Amount = 1
-            });
+            var filteredFishes = _itemManager
+                .GetItems()
+                .FindAll(item => item.ItemType == InventoryItemType.FISH &&
+                                 item.Rarity >= _fishingZoneDataOutput.MinFishRarity &&
+                                 item.Rarity <= _fishingZoneDataOutput.MaxFishRarity && 
+                                 item.IsCooked == false);
+
+            var fish = filteredFishes[UnityEngine.Random.Range(0, filteredFishes.Count)];
+            _inventoryManager.AddItem(fish, 1);
             OnFishingEnded?.Invoke();
         }
 
-        void OnMiniGameCompletedPerfect()
-        {
-            var fish = _fishingZoneDataOutput.FishList.Find(fish => fish.Rarity is >= 2 and <= 4);
-            _inventoryManager.AddItem(new InventoryItemParams()
-            {
-                ID = fish.ID,
-                Name = fish.FishName,
-                Description = fish.Description,
-                InventoryItemType = InventoryItemType.FISH,
-                IsSellable = true,
-                Price = fish.Price,
-                CurrencyType = fish.CurrencyType,
-                Amount = 1
-            });
-            OnFishingEnded?.Invoke();
-        }
 
         public void Dispose()
         {

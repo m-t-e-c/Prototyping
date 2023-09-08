@@ -1,0 +1,61 @@
+﻿[
+  {
+    "ID": "wood",
+    "ItemName": "Wood",
+    "Description": "A log from a tree.",
+    "ItemType": "Resource",
+    "CurrencyType": "SoftCurrency",
+    "IsSellable": "true",
+    "IsStackable": "true",
+    "IsEquipable" : "false",
+    "IsCookable" : "false",
+    "Rarity": "COMMON",
+    "Price": "10"
+  },
+  {
+    "ID": "raw_hamsi",
+    "ItemName": "Hamsi",
+    "Description": "Uncooked Hamsi.",
+    "ItemType": "Fish",
+    "CurrencyType": "SoftCurrency",
+    "IsSellable": "true",
+    "IsStackable": "true",
+    "IsEquipable" : "false",
+    "IsCookable" : "true",
+    "Rarity": "COMMON",
+    "Price": "11",
+    "Hunger" : "10",
+    "Energy" : "15"
+  },
+  {
+    "ID": "cooked_hamsi",
+    "ItemName": "Hamsi",
+    "Description": "A well cooked Hamsi.",
+    "ItemType": "Fish",
+    "CurrencyType": "SoftCurrency",
+    "IsSellable": "true",
+    "IsStackable": "true",
+    "IsEquipable" : "false",
+    "IsCookable" : "false",
+    "IsCooked" : "true",
+    "Rarity": "COMMON",
+    "Price": "11",
+    "Hunger" : "10",
+    "Energy" : "15"
+  },
+  {
+    "ID": "somon",
+    "ItemName": "Somon",
+    "Description": "A Somon fish.",
+    "ItemType": "Fish",
+    "CurrencyType": "SoftCurrency",
+    "IsSellable": "true",
+    "IsStackable": "true",
+    "IsEquipable" : "false",
+    "IsCookable" : "true",
+    "Rarity": "COMMON",
+    "Price": "28",
+    "Hunger" : "12",
+    "Energy" : "25"
+  }
+]

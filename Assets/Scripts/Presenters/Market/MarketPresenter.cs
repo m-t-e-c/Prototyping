@@ -17,16 +17,11 @@ namespace FishingIdle.Presenters
 
         MarketModel _model;
 
-        ICurrencyManager _currencyManager;
-        IInventoryManager _inventoryManager;
+      
         
         protected override void Start()
         {
             base.Start();
-
-            _currencyManager = Locator.Instance.Resolve<ICurrencyManager>();
-            _inventoryManager = Locator.Instance.Resolve<IInventoryManager>();
-            
             _model = new MarketModel();
             _model.OnItemListChanged += OnItemListLoaded;
             _model.GetConfig();
@@ -35,18 +30,9 @@ namespace FishingIdle.Presenters
 
         void OnItemListLoaded(object sender, List<InventoryItem> e)
         {
-            marketItemsScrollPanel.SetData(e, OnBuyClicked, OnSellClicked);
+            marketItemsScrollPanel.SetData(e, null, _model.SellItem);
         }
 
-        void OnSellClicked(MarketItemModel obj)
-        {
-            _inventoryManager.RemoveItem(obj.itemID);
-            _currencyManager.AddCurrency(obj.CurrencyType, obj.itemPrice);
-        }
-
-        void OnBuyClicked(MarketItemModel obj)
-        {
-        }
 
         void CreateTabs()
         {

@@ -1,12 +1,59 @@
 [
   {
-    "ID": "4",
-    "ItemName": "Alabalık",
-    "ItemDescription": "Alabalık, or trout, is a freshwater fish with a delicate flavor. It's commonly prepared by grilling, pan-frying, or baking.",
-    "ItemAmount": 1,
-    "IsSellable": true,
-    "ItemPrice": 2,
-    "ItemType": 0,
-    "CurrencyType": 0
+    "ItemData": {
+      "ID": "somon",
+      "ItemName": "Somon",
+      "Description": "A Somon fish.",
+      "ItemType": 0,
+      "CurrencyType": 1,
+      "IsSellable": true,
+      "IsCookable": true,
+      "IsCooked": false,
+      "IsEquipable": false,
+      "IsStackable": true,
+      "Rarity": 0,
+      "Price": 28,
+      "Hunger": 12.0,
+      "Energy": 25.0
+    },
+    "ItemAmount": 2
+  },
+  {
+    "ItemData": {
+      "ID": "wood",
+      "ItemName": "Wood",
+      "Description": "A log from a tree.",
+      "ItemType": 4,
+      "CurrencyType": 1,
+      "IsSellable": true,
+      "IsCookable": false,
+      "IsCooked": false,
+      "IsEquipable": false,
+      "IsStackable": true,
+      "Rarity": 0,
+      "Price": 10,
+      "Hunger": 0.0,
+      "Energy": 0.0
+    },
+    "ItemAmount": 4
+  },
+  {
+    "ItemData": {
+      "ID": "cooked_hamsi",
+      "ItemName": "Hamsi",
+      "Description": "A well cooked Hamsi.",
+      "ItemType": 0,
+      "CurrencyType": 1,
+      "IsSellable": true,
+      "IsCookable": false,
+      "IsCooked": true,
+      "IsEquipable": false,
+      "IsStackable": true,
+      "Rarity": 0,
+      "Price": 11,
+      "Hunger": 10.0,
+      "Energy": 15.0
+    },
+    "ItemAmount": 1
   }
 ]

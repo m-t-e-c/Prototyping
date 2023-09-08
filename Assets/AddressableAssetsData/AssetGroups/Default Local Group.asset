@@ -45,6 +45,14 @@ MonoBehaviour:
     m_Address: MarketView
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 1fe954cfc0acc7641bbadf5d06de4fab
+    m_Address: TreeLog
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2bf5d3806e8e4964a9791abd4c6c541d
+    m_Address: CampfireView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 627dedd9b765c254a822bd4ceb6ae812, type: 2}
   m_SchemaSet:

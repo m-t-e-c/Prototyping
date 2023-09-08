@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: ItemIcons
+  m_EditorClassIdentifier: 
+  m_GroupName: ItemIcons
+  m_Data:
+    m_SerializedData: []
+  m_GUID: eaea0bed94fa0e34e953ca5368098543
+  m_SerializeEntries:
+  - m_GUID: a2c630bd06250164f9c66a9d7b4b16c4
+    m_Address: wood_icon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 032f9f68e19a00a48a48987b52ee3157
+    m_Address: raw_hamsi_icon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 627dedd9b765c254a822bd4ceb6ae812, type: 2}
+  m_SchemaSet:
+    m_Schemas: []

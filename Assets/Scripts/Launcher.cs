@@ -15,6 +15,8 @@ public class Launcher : MonoBehaviour
     IFishingZoneManager _fishingZoneManager;
     ICurrencyManager _currencyManager;
     IPlayerManager _playerManager;
+    IItemManager _itemManager;
+    IPreferencesManager _preferencesManager;
     
     Locator _locator;
     
@@ -26,6 +28,7 @@ public class Launcher : MonoBehaviour
         FIServices.RetrieveCurrencyData();
         FIServices.RetrieveUserInventoryData();
         FIServices.RetrieveFishingZoneData();
+        FIServices.RetrieveItemsData();
         InitManagers();
         _viewManager.LoadView(new LoadViewParams<GameplayPresenter>()
         {
@@ -58,6 +61,12 @@ public class Launcher : MonoBehaviour
         
         _playerManager = new PlayerManager();
         _locator.Register<IPlayerManager>(_playerManager);
+        
+        _itemManager = new ItemManager();
+        _locator.Register<IItemManager>(_itemManager);
+        
+        _preferencesManager = new PreferencesManager();
+        _locator.Register<IPreferencesManager>(_preferencesManager);
     }
 
     async void SpawnPlayerAndCamera(Joystick joystick)

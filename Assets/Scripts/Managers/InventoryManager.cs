@@ -29,35 +29,30 @@ namespace FishingIdle.Managers
 
         public List<InventoryItem> GetItemsByType(InventoryItemType type)
         {
-            return _userItems.FindAll(item => item.ItemType == type);
+            return _userItems.FindAll(item => item.ItemData.ItemType == type);
         }
 
         public InventoryItem GetItem(string itemID)
         {
-            return _userItems.Find(item => item.ID.Equals(itemID));
+            return _userItems.Find(item => item.ItemData.ID.Equals(itemID));
         }
 
-        public void AddItem(InventoryItemParams inventoryItemParams)
+        public void AddItem(ItemDataOutput itemData, int amount = 1)
         {
-            bool isItemExist = _userItems.Exists(item => item.ID.Equals(inventoryItemParams.ID));
+            bool isItemExist = _userItems.Exists(item => item.ItemData.ID.Equals(itemData.ID));
 
             if (isItemExist)
             {
-                var userItem = GetItem(inventoryItemParams.ID);
-                userItem.ItemAmount += inventoryItemParams.Amount;
+                var userItem = GetItem(itemData.ID);
+                userItem.ItemAmount += amount;
                 OnItemAdded?.Invoke(this, userItem);
             }
             else
             {
                 var newItem = new InventoryItem()
                 {
-                    ID = inventoryItemParams.ID,
-                    ItemName = inventoryItemParams.Name,
-                    ItemType = inventoryItemParams.InventoryItemType,
-                    ItemAmount = inventoryItemParams.Amount,
-                    ItemDescription = inventoryItemParams.Description,
-                    IsSellable = inventoryItemParams.IsSellable,
-                    ItemPrice = inventoryItemParams.Price
+                    ItemData = itemData,
+                    ItemAmount = amount,
                 };
                 _userItems.Add(newItem);
                 OnItemAdded?.Invoke(this, newItem);
@@ -68,7 +63,7 @@ namespace FishingIdle.Managers
 
         public void RemoveItem(string itemID)
         {
-            bool isItemExist = _userItems.Exists(item => item.ID.Equals(itemID));
+            bool isItemExist = _userItems.Exists(item => item.ItemData.ID.Equals(itemID));
 
             if (isItemExist)
             {

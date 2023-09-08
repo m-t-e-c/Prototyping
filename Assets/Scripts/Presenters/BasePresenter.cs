@@ -23,7 +23,7 @@ namespace FishingIdle.Presenters
            Close();
         }
 
-        protected virtual void Close()
+        protected void Close()
         {
             _viewManager?.DestroyView<T>();
         }

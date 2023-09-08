@@ -37,16 +37,14 @@ namespace FishingIdle.Presenters.Market
                 var marketItemModel = new MarketItemModel()
                 {
                     index = i,
-                    itemID = item.ID,
-                    itemName = item.ItemName,
-                    itemDescription = item.ItemDescription,
-                    itemPrice = item.ItemPrice,
+                    itemID = item.ItemData.ID,
+                    itemName = item.ItemData.ItemName,
+                    itemDescription = item.ItemData.Description,
+                    itemPrice = item.ItemData.Price,
                     itemAmount = item.ItemAmount,
-                    itemRarity = 1,
-                    itemType = item.ItemType,
-                    onBuyClicked = null,
-                    onSellClicked = null,
-                    CurrencyType = item.CurrencyType
+                    itemRarity = item.ItemData.Rarity,
+                    itemType = item.ItemData.ItemType,
+                    CurrencyType = item.ItemData.CurrencyType,
                 };
                 _data.InsertOneAtEnd(marketItemModel);
             }
@@ -98,8 +96,8 @@ namespace FishingIdle.Presenters.Market
         public string itemName;
         public string itemDescription;
         public long itemPrice;
-        public int itemRarity;
         public int itemAmount;
+        public ItemRarity itemRarity;
         public InventoryItemType itemType;
         public CurrencyType CurrencyType;
         public Action<MarketItemModel> onBuyClicked;
@@ -148,8 +146,22 @@ namespace FishingIdle.Presenters.Market
         {
             _viewElements.itemNameLabel.text = _model.itemName;
             _viewElements.itemDescriptionLabel.text = _model.itemDescription;
-            _viewElements.itemPriceLabel.text = _model.itemPrice.ToString();
-            _viewElements.itemRarityLabel.text = _model.itemRarity.ToString();
+            _viewElements.sellButtonPriceLabel.text = _model.itemPrice.ToString();
+            _viewElements.buyButtonPriceLabel.text = _model.itemPrice.ToString();
+            _viewElements.amountHolder.SetActive(_model.itemAmount > 1);
+            _viewElements.frameBg.color = _model.itemRarity switch
+            {
+                ItemRarity.COMMON => _viewElements.rarityColors[0],
+                ItemRarity.UNCOMMON => _viewElements.rarityColors[1],
+                ItemRarity.RARE => _viewElements.rarityColors[2],
+                ItemRarity.EPIC => _viewElements.rarityColors[3],
+                ItemRarity.LEGENDARY => _viewElements.rarityColors[4],
+                ItemRarity.MYTHIC => _viewElements.rarityColors[5],
+                ItemRarity.GODLY => _viewElements.rarityColors[5],
+                ItemRarity.SPECIAL => _viewElements.rarityColors[5],
+                _ => _viewElements.rarityColors[5]
+            };
+
             _viewElements.itemAmountLabel.text = _model.itemAmount.ToString();
         }
     }
